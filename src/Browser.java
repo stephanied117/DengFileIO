@@ -43,7 +43,7 @@ public class Browser {
     //TODO
     //This method should display the webpage the user is currently on
     public void displayCurrentPage() {
-
+        System.out.println(currentPage);
     }
     //TODO
     //This method takes the name of the webpage the user wants to visit
@@ -54,7 +54,22 @@ public class Browser {
     //regardless of whether the Webpage was found or not,
     //the webpage the user is currently on should be displayed
     public void goToWebpage(String name) {
-
+        int yes = 0;
+        for (Webpage w : internet) {
+            if (w.getName().equals(name)) {
+                browserForward.pop();
+                browserBack.push(currentPage);
+                currentPage = w;
+                browserForward.push(currentPage);
+                yes++;
+            }
+        }
+        if (yes == 0) {
+            browserForward.pop();
+            browserBack.push(currentPage);
+            Webpage error = new Webpage("","");
+            currentPage = error;
+        }
     }
 
     //TODO
@@ -62,7 +77,7 @@ public class Browser {
     //If there is no webpage to go back to, print a message that explains
     //that the user cannot go back any further
     public void goBack() {
-
+        System.out.println(browserBack);
     }
 
     //TODO
@@ -71,7 +86,7 @@ public class Browser {
     //If there is no webpage to revisit, print a message that explains
     //that the user cannot go forward any further
     public void goForward() {
-
+        System.out.println(browserForward);
     }
 
     //TODO
@@ -80,7 +95,8 @@ public class Browser {
     //If there is no browsing history to view
     //print a message that explains that to the user instead
     public void viewBrowserBackAndForward() {
-
+        System.out.println(browserBack);
+        System.out.println(browserForward);
     }
 
     public void run() {
@@ -118,5 +134,4 @@ public class Browser {
             }
         }
     }
-
 }

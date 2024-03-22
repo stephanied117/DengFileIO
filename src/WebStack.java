@@ -25,8 +25,8 @@ public class WebStack {
     //If pop() is called when the stack is empty, returns null instead.
     public Webpage pop() {
         if (isEmpty() == false) {
-            internalList.remove(internalList.size() - 1);
-            return internalList.get(internalList.size() - 1);
+            return internalList.remove(internalList.size() - 1);
+            //return internalList.get(internalList.size() - 1);
         }
         return null;
     }
